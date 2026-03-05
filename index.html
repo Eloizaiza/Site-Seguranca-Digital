@@ -4,79 +4,149 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aprender e Proteger - Navegando com Segurança</title>
+
+  <!-- Fontes infantis -->
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-  <header>
-    <div class="hero">
-      <h1>Aprender e Proteger</h1>
-      <p>Navegando com Segurança na Internet</p>
-      <a href="#quiz" class="cta">Fazer o Quiz</a>
+<!-- 🌈 FUNDO ANIMADO -->
+<canvas id="bgCanvas"></canvas>
+
+<header>
+  <div class="hero">
+    <h1>🎮 Aprender e Proteger</h1>
+    <p>Navegando com Segurança na Internet</p>
+
+    <button onclick="irParaQuiz()" class="btnPrincipal">
+      Começar Quiz 🚀
+    </button>
+
+    <button onclick="abrirAdmin()" class="btnPrincipal">
+      🔐 Área Admin
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- CONTEÚDO EDUCATIVO ORIGINAL MANTIDO -->
+
+  <section class="card">
+    <h2>🌐 O que é a Internet?</h2>
+    <p>
+      A internet é um lugar para aprender, jogar, assistir vídeos e conversar com amigos.
+      É divertida, mas precisa ser usada com cuidado e responsabilidade.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>⚠️ Perigos da Internet</h2>
+    <ul>
+      <li>Conversar com desconhecidos</li>
+      <li>Clicar em links ou anúncios estranhos</li>
+      <li>Passar senhas ou dados pessoais</li>
+      <li>Ver conteúdos impróprios</li>
+      <li>Ser enganado por golpes</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>🛡️ Como se Proteger</h2>
+    <ul>
+      <li>Nunca compartilhe sua senha</li>
+      <li>Não informe nome completo, endereço ou escola</li>
+      <li>Peça ajuda a um adulto se algo parecer estranho</li>
+      <li>Use a internet em locais da casa onde um adulto possa ver</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>✅ Boas Práticas</h2>
+    <ul>
+      <li>Use a internet por um tempo saudável</li>
+      <li>Respeite as pessoas online</li>
+      <li>Não acredite em tudo que aparece</li>
+      <li>Pense antes de postar algo</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>👨‍👩‍👧 Para Pais e Responsáveis</h2>
+    <p>
+      Acompanhem o que as crianças acessam, conversem sobre riscos,
+      definam horários para uso da internet e incentivem atividades fora das telas.
+    </p>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+
+  <section id="quiz" class="card">
+    <h2>🎮 Quiz de Segurança Digital</h2>
+
+    <div class="score-box">
+      ⭐ Pontuação: <span id="pontuacao">0</span>
     </div>
-  </header>
 
-  <main>
-    <section class="card">
-      <h2>🌐 O que é a Internet?</h2>
-      <p>
-        A internet é um lugar para aprender, jogar, assistir vídeos e conversar com amigos.
-        É divertida, mas precisa ser usada com cuidado e responsabilidade.
-      </p>
-    </section>
+    <input type="text" id="nomeAluno" placeholder="Digite seu nome">
+    <input type="number" id="idadeAluno" placeholder="Digite sua idade">
 
-    <section class="card">
-      <h2>⚠️ Perigos da Internet</h2>
-      <ul>
-        <li>Conversar com desconhecidos</li>
-        <li>Clicar em links ou anúncios estranhos</li>
-        <li>Passar senhas ou dados pessoais</li>
-        <li>Ver conteúdos impróprios</li>
-        <li>Ser enganado por golpes</li>
-      </ul>
-    </section>
+    <p id="pergunta"></p>
+    <div id="opcoes"></div>
+    <p id="resultado"></p>
 
-    <section class="card">
-      <h2>🛡️ Como se Proteger</h2>
-      <ul>
-        <li>Nunca compartilhe sua senha</li>
-        <li>Não informe nome completo, endereço ou escola</li>
-        <li>Peça ajuda a um adulto se algo parecer estranho</li>
-        <li>Use a internet em locais da casa onde um adulto possa ver</li>
-      </ul>
-    </section>
+    <div id="finalTela" class="telaFinal" style="display:none;">
+  <div class="finalBox">
+    <h2 id="mensagemFinal" class="tituloFinal"></h2>
+    <div id="trofeuFinal" class="trofeu"></div>
+    <p id="pontuacaoFinal" class="pontuacaoFinal"></p>
+    <button onclick="reiniciarQuiz()" class="btnGame">
+      🔄 Jogar Novamente
+    </button>
+  </div>
+</div>
+  </section>
 
-    <section class="card">
-      <h2>✅ Boas Práticas</h2>
-      <ul>
-        <li>Use a internet por um tempo saudável</li>
-        <li>Respeite as pessoas online</li>
-        <li>Não acredite em tudo que aparece</li>
-        <li>Pense antes de postar algo</li>
-      </ul>
-    </section>
+  <!-- ================= ADMIN ================= -->
 
-    <section class="card">
-      <h2>👨‍👩‍👧 Para Pais e Responsáveis</h2>
-      <p>
-        Acompanhem o que as crianças acessam, conversem sobre riscos,
-        definam horários para uso da internet e incentivem atividades fora das telas.
-      </p>
-    </section>
+  <section id="adminArea" class="card" style="display:none;">
+    <h2>🔐 Área do Administrador</h2>
 
-    <section id="quiz" class="card quiz">
-      <h2>🎮 Quiz de Segurança Digital</h2>
-      <p id="pergunta"></p>
-      <div id="opcoes"></div>
-      <p id="resultado"></p>
-      <button onclick="reiniciarQuiz()">Reiniciar Quiz</button>
-    </section>
-  </main>
+    <!-- Botão inicial -->
+    <div id="loginAdminArea">
+      <button onclick="mostrarLogin()" class="btnPrincipal">
+        Entrar como Administrador
+      </button>
+    </div>
 
-  <footer>
-    <p>Projeto de Extensão – UNINTER | Segurança da informação Aplicada à Inclusão Digital</p>
-  </footer>
+    <!-- Campo senha aparece depois -->
+    <div id="campoSenha" style="display:none;">
+      <input type="password" id="senhaAdmin" placeholder="Digite a senha">
+      <button onclick="loginAdmin()" class="btnPrincipal">Entrar</button>
+    </div>
 
-  <script src="script.js"></script>
+    <!-- Painel -->
+    <div id="painelAdmin" style="display:none;">
+      <h3>📊 Resultados</h3>
+      <canvas id="graficoAdmin"></canvas>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Projeto de Extensão – UNINTER | Segurança da Informação Aplicada à Inclusão Digital</p>
+</footer>
+
+<!-- SCRIPT SEM DUPLICAÇÃO -->
+<script src="script.js"></script>
+
 </body>
 </html>
