@@ -14,7 +14,8 @@ Conscientizar crianças do 5º ano do ensino fundamental sobre:
 - JavaScript  
 
 ## Como executar
-Basta abrir o arquivo index.html em qualquer navegador.
+Basta abrir o arquivo index.html em qualquer navegador. 
+Ou acessar pelo link: https://eloizaiza.github.io/Site-Seguranca-Digital/
 
 ## Autor
 [Eloiza Nascimento]
