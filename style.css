@@ -1,79 +1,363 @@
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    background: linear-gradient(180deg, #eef2ff, #f8fafc);
-    color: #1f2933;
+  margin: 0;
+  font-family: 'Baloo 2', cursive;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  background-size: 800% 800%;
+  animation: fundoAnimado 15s ease infinite;
+  color: #222;
+  text-align: center;
+}
+
+/* FUNDO ANIMADO */
+@keyframes fundoAnimado {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* HEADER ESTILO GAME */
+header {
+  background: linear-gradient(135deg, #ff6f61, #ffcc70);
+  padding: 60px 20px;
+  color: white;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
+
+.hero h1 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow: 4px 4px 0px #ff3b2e;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+/* BOTÃO CTA ESTILO GEL */
+.cta {
+  background: linear-gradient(to bottom, #fff, #ffe066);
+  color: #ff3b2e;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 6px 0 #d97706;
+  transition: 0.2s;
+}
+
+.cta:hover {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #d97706;
+}
+
+/* ÁREA PRINCIPAL */
+main {
+  padding: 30px 20px;
+  max-width: 950px;
+  margin: auto;
+}
+
+/* CARDS ANIMADOS */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* TÍTULOS COM EMOJI GRANDE E SOMBRA */
+.card h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 0px #ffd166;
+}
+
+/* LISTAS */
+ul {
+  padding-left: 25px;
+  font-size: 1.05rem;
+}
+
+/* QUIZ CENTRALIZADO */
+.quiz {
+  text-align: center;
+}
+
+/* INPUTS */
+input {
+  width: 80%;
+  max-width: 400px;
+  padding: 12px;
+  margin: 10px auto;
+  border-radius: 15px;
+  border: 2px solid #ff6f61;
+  display: block;
+  font-size: 1rem;
+}
+
+/* BOTÕES GEL STYLE */
+button {
+  padding: 12px 20px;
+  background: linear-gradient(to bottom, #ff6f61, #ff3b2e);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 6px 0 #b91c1c;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #b91c1c;
+}
+
+/* RESULTADO */
+#resultado {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* GRÁFICO */
+canvas {
+  margin-top: 20px;
+}
+
+/* FOOTER */
+footer {
+  background: linear-gradient(135deg, #6366f1, #22c55e);
+  color: white;
+  text-align: center;
+  padding: 18px;
+  font-size: 0.95rem;
+  margin-top: 30px;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+/* PONTUAÇÃO */
+.score-box {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* MEDALHA ANIMADA */
+.medalha {
+  font-size: 4rem;
+  animation: girar 2s infinite linear;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ESTRELAS PISCANDO */
+.estrelas {
+  font-size: 2rem;
+  animation: piscar 1s infinite alternate;
+}
+
+@keyframes piscar {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* MISSÃO CONCLUÍDA */
+.missao {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.5rem;
+  color: #ff3b2e;
+  text-shadow: 3px 3px 0px #ffd166;
+  animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+@keyframes sumir {
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-  
-  header {
-    background: linear-gradient(135deg, #6366f1, #22c55e);
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
+}
+
+.botaoOpcao {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.botaoOpcao:hover {
+  transform: scale(1.1);
+}
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.botaoMusica {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(45deg,#ff66cc,#66ccff);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.botoesPrincipais {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btnPrincipal {
+  background: linear-gradient(45deg,#ff6ec7,#6ec7ff,#6effa1);
+  border: none;
+  padding: 15px 25px;
+  margin: 10px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 0 #444;
+  transition: 0.2s;
+}
+
+.btnPrincipal:active {
+  transform: translateY(5px);
+  box-shadow: 0 3px 0 #444;
+}
+
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+/* ================= TELA FINAL GAME ================= */
+
+.telaFinal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #1e3a8a, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: aparecerFinal 0.6s ease;
+}
+
+@keyframes aparecerFinal {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.finalBox {
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 0 40px gold;
+  animation: pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+  0% { box-shadow: 0 0 20px gold; }
+  50% { box-shadow: 0 0 50px orange; }
+  100% { box-shadow: 0 0 20px gold; }
+}
+
+.tituloFinal {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.8rem;
+  color: #ff3b2e;
+  text-shadow: 4px 4px 0px #ffd166;
+}
+
+.trofeu {
+  font-size: 5rem;
+  margin: 20px 0;
+  animation: girarTrofeu 3s infinite linear;
+}
+
+@keyframes girarTrofeu {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.pontuacaoFinal {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btnGame {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  background: linear-gradient(to bottom, #ff6f61, #ff3b2e);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 0 #b91c1c;
+  transition: 0.2s;
+}
+
+.btnGame:hover {
+  transform: translateY(5px);
+  box-shadow: 0 3px 0 #b91c1c;
+}
+
+@keyframes cairConfete {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
   }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .hero p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-  }
-  
-  .cta {
-    background: white;
-    color: #4f46e5;
-    padding: 10px 18px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  main {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-  }
-  
-  .card {
-    background: white;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 16px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-  }
-  
-  h2 {
-    margin-top: 0;
-  }
-  
-  ul {
-    padding-left: 20px;
-  }
-  
-  .quiz button {
-    margin-right: 8px;
-  }
-  
-  button {
-    padding: 10px 14px;
-    background: #4f46e5;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    transform: translateY(-1px);
-  }
-  
-  footer {
-    background: #eef2ff;
-    text-align: center;
-    padding: 12px;
-    font-size: 0.9rem;
-  }
+}
+
+/* POPUP EDUCATIVO */
+
+.popupDica {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(45deg,#1e3a8a,#2563eb);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 2000;
+  animation: subir 0.3s ease;
+}
+
+@keyframes subir {
+  from { transform: translate(-50%, 20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
